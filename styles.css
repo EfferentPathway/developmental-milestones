@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+    background-color: black;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Prevent overflow */
+    position: relative;
+    cursor: grab;
+}
+
+#graphic {
+    position: absolute;
+    max-width: 100%;  /* Limit width to container */
+    max-height: 100%; /* Limit height to container */
+    transform-origin: 0 0; /* Zoom in from the top-left */
+}
