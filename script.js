@@ -6,19 +6,11 @@ let startX, startY, isPanning = false;
 let translateX = 0;
 let translateY = 0;
 
-window.onload = () => {
-    const rect = graphic.getBoundingClientRect();
-    const containerWidth = container.clientWidth;
-    const containerHeight = container.clientHeight;
-
-    // Calculate scale to fit the image within the viewport
-    const widthScale = containerWidth / rect.width;
-    const heightScale = containerHeight / rect.height;
-    scale = Math.min(widthScale, heightScale); // Use the smaller scale to fit
-    graphic.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-};
-
 container.addEventListener('mousedown', (e) => {
+    // Check if the left mouse button is pressed (button === 0)
+    if (e.button !== 0) return; // Only allow dragging with the left button
+
+    e.preventDefault(); // Prevent default behavior
     startX = e.clientX;
     startY = e.clientY;
     isPanning = true;
@@ -48,7 +40,7 @@ container.addEventListener('mouseleave', () => {
 
 container.addEventListener('wheel', (e) => {
     e.preventDefault();
-    const zoomFactor = 0.1;
+    const zoomFactor = 0.3;
     const rect = graphic.getBoundingClientRect();
 
     // Calculate mouse position relative to the graphic
